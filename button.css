@@ -72,6 +72,7 @@ button:not(.nao):hover {
   background-image: url("./botaoBackground.jpg");
   background-size: cover;
   background-blend-mode: overlay;
+  transition: transform 200ms linear;
 }
 
 .nao:hover {

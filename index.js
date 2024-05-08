@@ -18,29 +18,32 @@ let jaclicou = false;
 
 // botao nao é clicado
 function handleClick() {
-  printRandomQuote();
   jaclicou = true;
 
-  // randomizar onde o botao nao aparecerá
-  let randomX = Math.floor(Math.random() * x);
-  let randomY = Math.floor(Math.random() * y);
-
-  // Definindo os limites para garantir que o botão esteja dentro da visualização
-  const buttonWidth = noBtn.offsetWidth;
-  const buttonHeight = noBtn.offsetHeight;
-
-  // Verificar se a posição aleatória fica fora da tela
-  if (randomX + buttonWidth > x) {
-    randomX = x - buttonWidth;
-  }
-  if (randomY + buttonHeight > y) {
-    randomY = y - buttonHeight;
-  }
+  // randomizar onde o
+  const randomX = Math.floor(Math.random() * x);
+  const randomY = Math.floor(Math.random() * y);
 
   noBtn.style.position = "absolute";
   noBtn.style.left = `${randomX}px`;
   noBtn.style.top = `${randomY}px`;
 }
+
+// botao sim segue o cursor do mouse
+noBtn.addEventListener("click", (e) => {
+  // coordenadas do cursor do mouse
+  const cursorX = e.clientX;
+  const cursorY = e.clientY;
+
+  // de acordo com a altura e largura do botao, posicione exatamente no meio, o cursor
+  const halfWidthBtn = Number.parseInt(getComputedStyle(yesBtn).width) / 2;
+  const halfHeightBtn = Number.parseInt(getComputedStyle(yesBtn).height) / 4;
+
+  // position absolute para por em qualquer lugar que eu quiser
+  yesBtn.style.position = "absolute";
+  yesBtn.style.left = `${cursorX - halfWidthBtn}px`;
+  yesBtn.style.top = `${cursorY - halfHeightBtn}px`;
+});
 
 // sortear frase
 
