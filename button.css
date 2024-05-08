@@ -6,19 +6,22 @@
   margin: 0;
 }
 
+html {
+  height: 100%;
+}
+
 body {
-  background: pink;
-  background: rgba(246, 35, 232, 0.548);
-  background: linear-gradient(
-    90deg,
-    rgba(246, 35, 232, 0.276) 0%,
-    rgba(121, 9, 95, 0.286) 48%,
-    rgba(255, 0, 106, 0.325) 100%
-  );
+  background: linear-gradient(to right, #9a5fff79, #ff509c9c);
   width: 100%;
   height: 100vh;
   position: absolute;
   overflow: hidden;
+}
+
+.title {
+  color: rgb(31, 29, 29);
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 .container {
@@ -48,31 +51,42 @@ button {
   border: 1px solid #9f3085;
   text-transform: uppercase;
   font-weight: 800;
-  width: 5em;
   border-radius: 0.5em;
   position: relative;
-}
-
-button:hover {
-  transform: scale(1.02);
   cursor: pointer;
+  transition: transform 200ms linear;
 }
 
-button[class="sim"] {
-  background: rgb(18, 99, 39);
-  color: #78e2b0;
+button:not(.nao):hover {
+  transform: scale(1.02);
+}
+
+.sim {
+  color: #f936b2;
   width: 100px;
   height: 50px;
   font-size: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-image: url("./botaoBackground.jpg");
+  background-size: cover;
+  background-blend-mode: overlay;
 }
 
-button[class="nao"] {
+.nao:hover {
   background: rgb(204, 16, 47);
   color: #f9aabf;
   z-index: 99;
+  filter: grayscale(0);
+}
+
+.nao {
+  background: rgb(204, 16, 47);
+  color: #f9aabf;
+  z-index: 99;
+  filter: grayscale(100);
+  transition: linear 200ms;
 }
 
 video {
